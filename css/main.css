@@ -7,6 +7,7 @@ html {
 .main-header .sub-heading,
 .about-us-right h3,
 .about-us-right p,
+.gallery .overlay .view-button,
 .footer-title {
   letter-spacing: 1.4px;
 }
@@ -23,7 +24,7 @@ html {
 .about-us-right .about-us-button,
 .header a,
 .about-us-left img,
-.gallery img,
+.gallery .overlay img,
 footer .footer-header a {
   box-shadow: 14px 13px 31px -5px rgba(0, 0, 0, 0.75);
 }
@@ -40,6 +41,13 @@ footer .footer-header a {
   font-size: 0.925rem;
   padding: 1em 3em;
   background: transparent;
+}
+@media (max-width: 600px) {
+  .main-header .main-button,
+  .about-us-right .about-us-button {
+    font-size: 0.725rem;
+    padding: 0.8em 2.7em;
+  }
 }
 .main-header .main-button:hover,
 .about-us-right .about-us-button:hover {
@@ -69,13 +77,23 @@ img {
   display: grid;
   place-items: center;
 }
+@media (max-width: 900px) {
+  .about-us {
+    grid-template-areas: "right";
+  }
+}
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   grid-gap: 10px;
   padding: 1em;
   background-color: #37332b;
+}
+@media (max-width: 432px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
 }
 
 footer {
@@ -98,13 +116,20 @@ body {
 .header a {
   transition: color 0.2s ease-out, background-color 0.2s ease-in;
   border-radius: 50%;
-  font-size: 4rem;
   width: 2em;
   height: 2em;
+  font-size: 4rem;
   border: 2px solid #d3ab55;
   color: #d3ab55;
   display: inline-block;
   position: relative;
+}
+@media (max-width: 600px) {
+  .header a {
+    font-size: 2.5rem;
+    width: 2em;
+    height: 2em;
+  }
 }
 .header a i {
   position: absolute;
@@ -126,9 +151,19 @@ body {
   font-size: 2.8rem;
   font-weight: 400;
 }
+@media (max-width: 600px) {
+  .title h1 {
+    font-size: 1.8rem;
+  }
+}
 .title p {
   font-weight: 300;
   font-size: 1.3rem;
+}
+@media (max-width: 600px) {
+  .title p {
+    font-size: 0.9rem;
+  }
 }
 
 .main-header {
@@ -146,11 +181,26 @@ body {
   color: #d3ab55;
   padding: 0.1em;
 }
+@media (max-width: 600px) {
+  .main-header .main-heading {
+    font-size: 3rem;
+  }
+}
 .main-header .sub-heading {
   font-family: "Nunito", san-serif;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 300;
   font-size: 2.4rem;
+}
+@media (max-width: 600px) {
+  .main-header .sub-heading {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 400px) {
+  .main-header .sub-heading {
+    font-size: 1.3rem;
+  }
 }
 
 .about-us-left {
@@ -164,6 +214,11 @@ body {
 .about-us-left img:hover {
   transform: translate(-15%) scale(1.4);
 }
+@media (max-width: 900px) {
+  .about-us-left {
+    display: none;
+  }
+}
 
 .about-us-right {
   grid-area: right;
@@ -175,24 +230,44 @@ body {
   text-align: start;
   color: #d3ab55;
 }
+@media (max-width: 900px) {
+  .about-us-right {
+    padding: 2em;
+    text-align: center;
+  }
+}
 .about-us-right h1 {
   font-family: "Dancing Script", cursive;
   font-size: 4.5rem;
   letter-spacing: 0.06em;
   margin-bottom: 0.2em;
 }
+@media (max-width: 900px) {
+  .about-us-right h1 {
+    font-size: 3rem;
+  }
+}
 .about-us-right h3 {
-  font-size: 2.4rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   font-family: "Nunito", san-serif;
   margin-bottom: 0.5em;
+}
+@media (max-width: 900px) {
+  .about-us-right h3 {
+    font-size: 1.5rem;
+  }
 }
 .about-us-right .stars {
   margin-bottom: 1.7em;
   align-self: stretch;
   display: flex;
   justify-content: center;
+}
+@media (max-width: 900px) {
+  .about-us-right .stars {
+    font-size: 0.7rem;
+  }
 }
 .about-us-right .stars > * {
   margin: 0 0.4em;
@@ -206,16 +281,80 @@ body {
   margin-bottom: 0.9em;
   font-style: italic;
 }
+@media (max-width: 900px) {
+  .about-us-right p {
+    text-indent: 0;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+}
 
-.gallery img {
+.gallery .overlay {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+}
+.gallery .overlay img {
   border-radius: 5px;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+}
+.gallery .overlay .image-overlay {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  background-color: rgba(38, 38, 38, 0.8);
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+}
+.gallery .overlay:hover .image-overlay {
+  transform: translate(0);
+}
+.gallery .overlay .view-button {
+  transition: color 0.2s ease-out, background-color 0.2s ease-in;
+  border: 2px solid #262626;
+  border-radius: 5px;
+  margin-top: 1em;
+  color: #262626;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.725rem;
+  padding: 0.8em 2em;
+  background: #d3ab55;
+  margin-top: 2em;
+}
+.gallery .overlay .view-button:hover {
+  color: #d3ab55;
+  background-color: #262626;
+}
+.gallery .overlay h3 {
+  font-weight: 400;
+  font-size: 2.3rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.gallery .overlay p {
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
 }
 
 footer .footer-header {
+  font-family: "Nunito", san-serif;
   display: grid;
   grid-gap: 1.2em;
   grid-template-columns: auto 1fr;
   place-items: center;
+}
+@media (max-width: 600px) {
+  footer .footer-header {
+    grid-gap: 0.6em;
+  }
 }
 footer .footer-header a {
   transition: color 0.2s ease-out, background-color 0.2s ease-in;
@@ -244,13 +383,28 @@ footer .footer-header a:hover {
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
 }
+@media (max-width: 600px) {
+  .footer-title {
+    padding: 1em;
+  }
+}
 .footer-title h1 {
   font-size: 2.3rem;
   font-weight: 400;
 }
+@media (max-width: 600px) {
+  .footer-title h1 {
+    font-size: 1.875rem;
+  }
+}
 .footer-title p {
   font-weight: 300;
   font-size: 1.3rem;
+}
+@media (max-width: 600px) {
+  .footer-title p {
+    font-size: 1rem;
+  }
 }
 
 .social-media {
@@ -266,6 +420,11 @@ footer .footer-header a:hover {
   font-size: 2.5rem;
   color: rgba(255, 255, 255, 0.6);
 }
+@media (max-width: 600px) {
+  .social-media .social-media-link {
+    font-size: 2rem;
+  }
+}
 .social-media .social-media-link:hover {
   color: #d3ab55;
 }
@@ -275,4 +434,14 @@ footer .footer-header a:hover {
   color: rgba(255, 255, 255, 0.6);
   font-weight: 300;
   font-size: 1.3rem;
+}
+@media (max-width: 600px) {
+  .footer-copyright p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 432px) {
+  .footer-copyright p {
+    font-size: 0.7rem;
+  }
 }
