@@ -19,13 +19,8 @@
   </head>
   <body>
     <nav class="navbar">
-      <!-- <input type="checkbox" id="check" class="checkbox" /> -->
       <div class="hamburger-menu">
-        <label for="check" class="menu">
-          <div class="menu-line menu-line1"></div>
-          <div class="menu-line menu-line2"></div>
-          <div class="menu-line menu-line3"></div>
-        </label>
+        <div class="menu-line"></div>
       </div>
 
       <div class="navbar-navigation">
@@ -217,12 +212,13 @@
     </footer>
     <script>
       const navbar = document.querySelector(".navbar");
-      const menuButton = navbar.querySelector(".menu");
+      const menuButton = navbar.querySelector(".hamburger-menu");
       const leftNav = navbar.querySelector(".navbar-navigation-left");
       const rightNav = navbar.querySelector(".navbar-navigation-right");
       menuButton.addEventListener("click", () => {
         leftNav.classList.toggle("open");
         rightNav.classList.toggle("open");
+        menuButton.classList.toggle("open");
       });
     </script>
   </body>
