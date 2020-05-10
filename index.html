@@ -18,6 +18,59 @@
     <title>Restaurant "Supremo"</title>
   </head>
   <body>
+    <nav class="navbar">
+      <!-- <input type="checkbox" id="check" class="checkbox" /> -->
+      <div class="hamburger-menu">
+        <label for="check" class="menu">
+          <div class="menu-line menu-line1"></div>
+          <div class="menu-line menu-line2"></div>
+          <div class="menu-line menu-line3"></div>
+        </label>
+      </div>
+
+      <div class="navbar-navigation">
+        <div class="navbar-navigation-left">
+          <img
+            src="./images/nav-img-1.jpeg"
+            alt="nav-img-1"
+            class="left-image left-image-1"
+          />
+          <img
+            src="./images/nav-img-2.jpeg"
+            alt="nav-img-2"
+            class="left-image left-image-2"
+          />
+          <img
+            src="./images/nav-img-3.jpeg"
+            alt="nav-img-3"
+            class="left-image left-image-3"
+          />
+        </div>
+        <div class="navbar-navigation-right">
+          <ul class="nav-list">
+            <li class="nav-list-item">
+              <a href="#" class="nav-list-link">Home</a>
+            </li>
+            <li class="nav-list-item">
+              <a href="#" class="nav-list-link">About Us</a>
+            </li>
+            <li class="nav-list-item">
+              <a href="#" class="nav-list-link">Gallery</a>
+            </li>
+            <li class="nav-list-item">
+              <a href="#" class="nav-list-link">Reservation</a>
+            </li>
+            <li class="nav-list-item">
+              <a href="#" class="nav-list-link">Services</a>
+            </li>
+            <li class="nav-list-item">
+              <a href="#" class="nav-list-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <section class="header-content">
       <header class="header">
         <a href="#" class="logo"><i class="fas fa-utensils"></i></a>
@@ -162,5 +215,15 @@
         </p>
       </div>
     </footer>
+    <script>
+      const navbar = document.querySelector(".navbar");
+      const menuButton = navbar.querySelector(".menu");
+      const leftNav = navbar.querySelector(".navbar-navigation-left");
+      const rightNav = navbar.querySelector(".navbar-navigation-right");
+      menuButton.addEventListener("click", () => {
+        leftNav.classList.toggle("open");
+        rightNav.classList.toggle("open");
+      });
+    </script>
   </body>
 </html>
